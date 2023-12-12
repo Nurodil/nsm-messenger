@@ -20,12 +20,12 @@ class LandingScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 50,),
             const Text("Welcome to NSM Messenger",
-            style: TextStyle(fontSize: 23),
+            style: TextStyle(fontSize: 27),
             ),
             SizedBox(height: size.height/9,),
             Image.asset("assets/NSM.png",
-              height: 345,
-              width: 345,
+              height: 375,
+              width: 375,
             ),
             SizedBox(height: size.height/9,),
             const Padding(
