@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "142612857159",
+    "project_id": "nsm-backend-d2777",
+    "storage_bucket": "nsm-backend-d2777.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142612857159:android:4793eecfb0af706bfb4c62",
+        "android_client_info": {
+          "package_name": "com.example.nsm_messenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuvISERBgiv5xp0jUBARKNd_M2ByyjGLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

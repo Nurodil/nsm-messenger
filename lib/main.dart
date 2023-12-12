@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:nsm_messenger/features/landing/screens/landing_screen.dart';
 import 'package:nsm_messenger/router.dart';
 import 'package:nsm_messenger/widgets/colors.dart';
+import 'package:nsm_messenger/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-   // options: DefaultFirebaseOptions.currentPlatform,
+   options: DefaultFirebaseOptions.currentPlatform,
   );
   
   runApp(
