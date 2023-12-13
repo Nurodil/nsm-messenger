@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nsm_messenger/common/widget/custom_button.dart';
 import 'package:nsm_messenger/features/auth/screens/login_screen.dart';
-import 'package:nsm_messenger/widgets/colors.dart';
+import 'package:nsm_messenger/colors.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -27,7 +27,7 @@ class LandingScreen extends StatelessWidget {
               height: 375,
               width: 375,
             ),
-            SizedBox(height: size.height/9,),
+            SizedBox(height: size.height/13,),
             const Padding(
               padding: EdgeInsets.all(15.0),
               child: Text("Read Privacy Policy and Please Tap \"Agree and continue\" Button.",

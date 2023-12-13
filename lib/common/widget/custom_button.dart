@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nsm_messenger/widgets/colors.dart';
+import 'package:nsm_messenger/colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: tabColor,
+        backgroundColor: appBarColor,
         minimumSize: const Size(double.infinity, 50)
       ),
       child: Text(text, style: const TextStyle(

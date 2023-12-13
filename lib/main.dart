@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nsm_messenger/features/landing/screens/landing_screen.dart';
 import 'package:nsm_messenger/router.dart';
-import 'package:nsm_messenger/widgets/colors.dart';
+import 'package:nsm_messenger/colors.dart';
 import 'package:nsm_messenger/firebase_options.dart';
 
 void main() async {
@@ -10,9 +11,8 @@ void main() async {
   await Firebase.initializeApp(
    options: DefaultFirebaseOptions.currentPlatform,
   );
-  
   runApp(
-    MyApp()
+    const ProviderScope(child: MyApp(),),
   );
 }
 class MyApp extends StatelessWidget {
@@ -23,13 +23,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'NMSChat',
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: whiteColor,
+        scaffoldBackgroundColor: backgroundColor,
         appBarTheme: const AppBarTheme(
-          color: tabColor
+          color: appBarColor
         )
       ),
       onGenerateRoute: (settings) => generateRoute(settings) ,
-      home: LandingScreen(),
+      home: const LandingScreen(),
     );
   }
 }

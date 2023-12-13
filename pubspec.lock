@@ -137,6 +137,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.4"
+  change_app_package_name:
+    dependency: "direct dev"
+    description:
+      name: change_app_package_name
+      sha256: f9ebaf68a4b5a68c581492579bb68273c523ef325fbf9ce2f1b57fb136ad023b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   characters:
     dependency: transitive
     description:
@@ -249,30 +257,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.6.3"
-  enough_giphy:
-    dependency: transitive
-    description:
-      name: enough_giphy
-      sha256: "71939f18e6bbe195d8d70f2fef828dea9634258dda429f294bc9d5322fff3ae7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.1"
-  enough_giphy_flutter:
+  enough_platform_widgets:
     dependency: "direct main"
     description:
-      name: enough_giphy_flutter
-      sha256: ab6786173371481f6a729a724f789f52846e9098697eb3a279b7f1e561f4e401
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.1"
-  enough_platform_widgets:
-    dependency: transitive
-    description:
       name: enough_platform_widgets
-      sha256: "2f0060cba4dd31ccb135b8d8ef4b66edd2e6fbd067ef8ae019a9511e7eb52026"
+      sha256: c0defcb43452ba5df1058567fd6b920bf49f3fb6e6c57ee822a091f084cdee5f
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.4"
+    version: "1.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -434,10 +426,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_platform_widgets
-      sha256: "107d5bc9a167b4e268cba44075ee399b6b2c63d44ede28f7e8c983d7fa4b59be"
+      sha256: "4970c211af1dad0a161e6379d04de2cace80283da0439f2f87d31a541f9b2b84"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.5"
+    version: "6.0.2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:

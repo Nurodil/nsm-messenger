@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAez7zKC29ucdsw1TlREtGKE4HqUoksIgk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>142612857159</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.nsmMessenger.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>nsm-backend-d2777</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nsm-backend-d2777.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:142612857159:ios:cad5c5ba73fdd08afb4c62</string>
+</dict>
+</plist>
