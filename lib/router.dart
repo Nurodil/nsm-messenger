@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nsm_messenger/common/widget/error.dart';
+import 'package:nsm_messenger/common/widgets/error.dart';
 import 'package:nsm_messenger/features/auth/screens/login_screen.dart';
 import 'package:nsm_messenger/features/auth/screens/otp_screen.dart';
 import 'package:nsm_messenger/features/auth/screens/user_information_screen.dart';
+import 'package:nsm_messenger/features/chat/screens/mobile_chat_screen.dart';
+import 'package:nsm_messenger/features/select_contacts/screens/select_control_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings)  {
   switch (settings.name) {
@@ -20,6 +22,26 @@ Route<dynamic> generateRoute(RouteSettings settings)  {
     case UserInformationScreen.routeName:
       return  MaterialPageRoute(
         builder: (context) => const UserInformationScreen(),
+    );
+    
+    case MobileChatScreen.routeName:
+      final arguments = settings.arguments as Map<String, dynamic>;
+      final name = arguments['name'];
+      final uid = arguments['uid'];
+      final isGroupChat = arguments['isGroupChat'];
+      final profilePic = arguments['profilePic'];
+      return MaterialPageRoute(
+        builder: (context) => MobileChatScreen(
+          name: name,
+          uid: uid,
+          isGroupChat: isGroupChat,
+          profilePic: profilePic,
+        ),
+      );
+
+    case SelectContactsScreen.routeName:
+      return  MaterialPageRoute(
+        builder: (context) => const SelectContactsScreen(),
     );
 
     default:

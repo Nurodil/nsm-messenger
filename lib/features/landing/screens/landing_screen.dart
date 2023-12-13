@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nsm_messenger/common/widget/custom_button.dart';
+import 'package:nsm_messenger/common/widgets/custom_button.dart';
 import 'package:nsm_messenger/features/auth/screens/login_screen.dart';
-import 'package:nsm_messenger/colors.dart';
+import 'package:nsm_messenger/common/utils/colors.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});

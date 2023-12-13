@@ -25,6 +25,16 @@ class AuthRepository {
 
   AuthRepository({required this.auth, required this.firestore});
 
+  Future<UserModel?> getCurrentUserData() async {
+    var userData = await firestore.collection("users").doc(auth.currentUser?.uid).get();
+    UserModel? user;
+    if(userData.data() != null) {
+       user = UserModel.fromMap(userData.data()!);
+    }
+
+    return user;
+  } 
+
   void signInWithPhone(BuildContext context ,String phoneNumber) async {
     try {
       await auth.verifyPhoneNumber(
@@ -86,7 +96,14 @@ class AuthRepository {
           .storeFileToFirebase("profilePic/$uid",profilePic);
       } 
 
-      var user = UserModel(name: name, uid: uid, profilePic: photoUrl, isOnline: true, phoneNumber: auth.currentUser!.uid, groupId: []);
+      var user = UserModel(
+        name: name, 
+        uid: uid, 
+        profilePic: photoUrl, 
+        isOnline: true, 
+        phoneNumber: auth.currentUser!.phoneNumber!, 
+        groupId: []
+      );
 
       await firestore.collection("users").doc(uid).set(user.toMap());
 
@@ -102,5 +119,10 @@ class AuthRepository {
         content: e.toString()
       );
     }
+  }
+
+  Stream<UserModel> userData(String userId) {
+    return firestore.collection('users').doc(userId)
+    .snapshots().map((event) => UserModel.fromMap(event.data()!));
   }
 }

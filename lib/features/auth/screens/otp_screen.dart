@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nsm_messenger/colors.dart';
+import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/features/auth/controller/auth_controller.dart';
 
 class OTPScreen extends ConsumerWidget {

@@ -51,5 +51,8 @@
 	<string>Camera library Use</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Mic Use</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Contact list to chat</string>
+
 </dict>
 </plist>
