@@ -51,6 +51,17 @@ class MyMessageCard extends StatelessWidget {
                     type: type
                   ),
                 ),
+                Positioned(
+                  bottom: 4,
+                  right: 10,
+                  child: Text(
+                        date,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.white60,
+                        ),
+                      ),
+                ),
               ],
             ),
           ),
