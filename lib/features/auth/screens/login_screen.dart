@@ -90,11 +90,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       
                     ),
                   ),
-          
                 ],
               ),
               
-              SizedBox(height: size.height*0.75,),
+              SizedBox(height: size.height*0.6,),
               SizedBox(
                 width: 115,
                 child: CustomButton(
