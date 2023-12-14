@@ -49,6 +49,9 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   }
 
   void sendTextMessage() async {
+    if ( _messageController.text.trim() == ''){
+      return;
+    }
     if (isShowSendButton) {
       ref.read(chatControllerProvider).sendTextMessage(
             context,
@@ -58,6 +61,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
           );
       setState(() {
         _messageController.text = '';
+        isShowSendButton = false;
       });
     } else {
       var tempDir = await getTemporaryDirectory();
@@ -162,13 +166,14 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                     });
                   }
                 },
+                
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: mobileChatBoxColor,
                   prefixIcon: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 9),
                     child: SizedBox(
-                      width: 100,
+                      width: 50,
                       child: Row(
                         children: [
                           IconButton(
@@ -205,10 +210,10 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                     ),
                   ),
                   hintText: 'Type a message!',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                  border: OutlineInputBorder(          
+                    borderRadius: BorderRadius.circular(17.0),
                     borderSide: const BorderSide(
-                      width: 0,
+                      width: 1,
                       style: BorderStyle.none,
                     ),
                   ),
@@ -223,7 +228,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                 left: 2,
               ),
               child: CircleAvatar(
-                backgroundColor: const Color(0xFF128C7E),
+                backgroundColor: Colors.blue,
                 radius: 25,
                 child: GestureDetector(
                   child: Icon(

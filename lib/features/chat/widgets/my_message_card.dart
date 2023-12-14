@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/common/enums/message_enum.dart';
+import 'package:nsm_messenger/features/chat/widgets/display_message.dart';
 
 class MyMessageCard extends StatelessWidget {
   final String message;
@@ -45,7 +46,10 @@ class MyMessageCard extends StatelessWidget {
                           right: 5,
                           bottom: 25,
                         ),
-                  child: Text(message),  
+                  child: DisplayMessage(
+                    message: message, 
+                    type: type
+                  ),
                 ),
               ],
             ),

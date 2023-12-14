@@ -61,7 +61,7 @@ class SelectContactsScreen extends ConsumerWidget {
                         title: Text(
                           contact.displayName,
                           style: const TextStyle(
-                            fontSize: 18,
+                            fontSize: 19,
                           ),
                         ),
                         leading: contact.photo == null

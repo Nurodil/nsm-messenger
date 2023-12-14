@@ -6,6 +6,7 @@ import 'package:nsm_messenger/features/auth/controller/auth_controller.dart';
 import 'package:nsm_messenger/features/chat/widgets/bottom_chat_field.dart';
 import 'package:nsm_messenger/models/user_model.dart';
 import 'package:nsm_messenger/features/chat/widgets/chat_list.dart';
+import 'package:nsm_messenger/screens/mobile_layout_screen.dart';
 
 class MobileChatScreen extends ConsumerWidget {
   static const String routeName = '/mobile-chat-screen';
@@ -25,9 +26,10 @@ class MobileChatScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(color: whiteColor),
           backgroundColor: appBarColor,
           title: isGroupChat
-              ? Text(name)
+              ? Text(name, style: TextStyle(color: whiteColor),)
               : StreamBuilder<UserModel>(
                   stream: ref.read(authControllerProvider).userDataById(uid),
                   builder: (context, snapshot) {
@@ -36,12 +38,13 @@ class MobileChatScreen extends ConsumerWidget {
                     }
                     return Column(
                       children: [
-                        Text(name),
+                        Text(name, style: TextStyle(color: whiteColor),),
                         Text(
                           snapshot.data!.isOnline ? 'online' : 'offline',
                           style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.normal,
+                            color: whiteColor
                           ),
                         ),
                       ],
