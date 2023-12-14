@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/common/widgets/error.dart';
 import 'package:nsm_messenger/common/widgets/loader.dart';
 import 'package:nsm_messenger/features/select_contacts/controller/select_contact_controller.dart';
@@ -20,18 +21,29 @@ class SelectContactsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select contact'),
+        iconTheme: const IconThemeData(
+          color: whiteColor,
+        ),
+        title: const Text('Select contact',
+        style: TextStyle(
+              fontSize: 23,
+              color: whiteColor,
+              fontWeight: FontWeight.bold,
+        ),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.search,
+              color: whiteColor,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.more_vert,
+              color: whiteColor,
             ),
           ),
         ],

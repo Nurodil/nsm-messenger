@@ -4,7 +4,7 @@ import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/features/auth/controller/auth_controller.dart';
 
 class OTPScreen extends ConsumerWidget {
-  static const String routeName = "/otp-screen";
+  static const String routeName = '/otp-screen';
   final String verificationId;
   const OTPScreen({super.key, required this.verificationId});
 

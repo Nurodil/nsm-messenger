@@ -10,3 +10,4 @@ const whiteColor = Colors.white;
 const mobileChatBoxColor = Colors.blue;
 const messageColor =  Colors.blue;
 const senderMessageColor = Colors.blue;
+const dividerColor = Colors.red;
