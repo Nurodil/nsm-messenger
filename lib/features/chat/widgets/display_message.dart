@@ -24,7 +24,7 @@ class DisplayMessage extends StatelessWidget {
         ? Text(
             message,
             style: const TextStyle(
-              fontSize: 21,
+              fontSize: 19,
               color: whiteColor
             ),
           )

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/common/enums/message_enum.dart';
+import 'package:nsm_messenger/features/chat/widgets/display_message.dart';
 
 class SenderMessageCard extends StatelessWidget {
   const SenderMessageCard({
@@ -42,9 +43,12 @@ class SenderMessageCard extends StatelessWidget {
                           left: 5,
                           top: 5,
                           right: 5,
-                          bottom: 25,
+                          bottom: 20,
                         ),
-                  child: Text(message),
+                  child: DisplayMessage(
+                    message: message, 
+                    type: type
+                  ),
                 ),
                 Positioned(
                   bottom: 2,
