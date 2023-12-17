@@ -6,7 +6,6 @@ import 'package:nsm_messenger/features/auth/screens/user_information_screen.dart
 import 'package:nsm_messenger/features/chat/screens/mobile_chat_screen.dart';
 import 'package:nsm_messenger/features/group/screens/create_group_screen.dart';
 import 'package:nsm_messenger/features/select_contacts/screens/select_contacts_screen.dart';
-import 'package:nsm_messenger/screens/mobile_layout_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings)  {
   switch (settings.name) {
@@ -32,7 +31,6 @@ Route<dynamic> generateRoute(RouteSettings settings)  {
       final uid = arguments['uid'];
       final isGroupChat =  arguments['isGroupChat'];
       final profilePic = arguments['profilePic'];
-      print(arguments);
       return MaterialPageRoute(
         builder: (context) => MobileChatScreen(
           name: name,

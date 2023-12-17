@@ -22,7 +22,7 @@ final chatRepositoryProvider = Provider(
 class ChatRepository {
   final FirebaseFirestore firestore;
   final FirebaseAuth auth;
-  ChatRepository({
+  ChatRepository( {
     required this.firestore,
     required this.auth,
   });
@@ -35,6 +35,7 @@ class ChatRepository {
         .snapshots()
         .asyncMap((event) async {
       List<ChatContact> contacts = [];
+
       for (var document in event.docs) {
         var chatContact = ChatContact.fromMap(document.data());
         var userData = await firestore
@@ -292,7 +293,7 @@ class ChatRepository {
           contactMsg = '🎵 Audio';
           break;
         default:
-          contactMsg = '📷 Photo';
+          contactMsg = 'unknown type';
       }
       _saveDataToContactsSubcollection(
         senderUserData,

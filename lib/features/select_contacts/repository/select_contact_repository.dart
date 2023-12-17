@@ -28,6 +28,7 @@ class SelectContactRepository {
     } catch (e) {
       debugPrint(e.toString());
     }
+    
     return contacts;
   }
 
@@ -35,20 +36,20 @@ class SelectContactRepository {
     try {
       var userCollection = await firestore.collection('users').get();
       bool isFound = false;
-
-      for (var document in userCollection.docs) {
-        var userData = UserModel.fromMap(document.data());
-        String selectedPhoneNum = selectedContact.phones[0].number.replaceAll(
+      String selectedPhoneNum = selectedContact.phones[0].number.replaceAll(
           ' ',
           '',
         );
+
+      for (var document in userCollection.docs) {
+        var userData = UserModel.fromMap(document.data());
         if (selectedPhoneNum == userData.phoneNumber) {
           isFound = true;
           Navigator.pushNamed(
             context,
             MobileChatScreen.routeName,
             arguments: {
-              'name': userData.name,
+              'name': selectedContact.displayName,
               'uid': userData.uid,
               'isGroupChat': false,
               'profilePic': userData.profilePic,

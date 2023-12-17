@@ -49,10 +49,10 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   }
 
   void sendTextMessage() async {
-    if ( _messageController.text.trim() == ''){
+    if (isShowSendButton) {
+      if ( _messageController.text.trim() == ''){
       return;
     }
-    if (isShowSendButton) {
       ref.read(chatControllerProvider).sendTextMessage(
             context,
             _messageController.text.trim(),

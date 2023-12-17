@@ -10,10 +10,12 @@ class SenderMessageCard extends StatelessWidget {
     required this.message,
     required this.date,
     required this.type,
+    this.senderName
   }) : super(key: key);
   final String message;
   final String date;
   final MessageEnum type;
+  final String? senderName;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,18 @@ class SenderMessageCard extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: Stack(
               children: [
+                if (senderName != null)
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(senderName!, 
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                
                 Padding(
                   padding: type == MessageEnum.text
                       ? const EdgeInsets.only(
@@ -45,6 +59,7 @@ class SenderMessageCard extends StatelessWidget {
                           right: 5,
                           bottom: 20,
                         ),
+                  
                   child: DisplayMessage(
                     message: message, 
                     type: type
@@ -57,7 +72,7 @@ class SenderMessageCard extends StatelessWidget {
                     date,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.grey[600],
+                      color: Colors.white60,
                     ),
                   ),
                 ),

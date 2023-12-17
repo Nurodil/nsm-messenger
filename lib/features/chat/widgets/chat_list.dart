@@ -67,7 +67,13 @@ class _ChatListState extends ConsumerState<ChatList> {
                   type: messageData.type,
                 );
               }
-              return SenderMessageCard(
+              return 
+              widget.isGroupChat ? 
+              SenderMessageCard(
+                message: messageData.text,
+                date: timeSent,
+                type: messageData.type,
+              ) : SenderMessageCard(
                 message: messageData.text,
                 date: timeSent,
                 type: messageData.type,

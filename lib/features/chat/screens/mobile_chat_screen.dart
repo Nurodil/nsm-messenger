@@ -6,7 +6,6 @@ import 'package:nsm_messenger/features/auth/controller/auth_controller.dart';
 import 'package:nsm_messenger/features/chat/widgets/bottom_chat_field.dart';
 import 'package:nsm_messenger/models/user_model.dart';
 import 'package:nsm_messenger/features/chat/widgets/chat_list.dart';
-import 'package:nsm_messenger/screens/mobile_layout_screen.dart';
 
 class MobileChatScreen extends ConsumerWidget {
   static const String routeName = '/mobile-chat-screen';
