@@ -16,30 +16,21 @@ class LandingScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 50,),
             const Text("Welcome to NSM Messenger",
-            style: TextStyle(fontSize: 27),
+            style: TextStyle(fontSize: 27,),
             ),
             SizedBox(height: size.height/9,),
             Image.asset("assets/NSM.png",
               height: 375,
               width: 375,
             ),
-            SizedBox(height: size.height/13,),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text("Read Privacy Policy and Please Tap \"Agree and continue\" Button.",
-              style: TextStyle(
-                color: greyColor
-              ),
-              textAlign: TextAlign.center,
-              ),
-            ),
+            SizedBox(height: size.height/5,),
             SizedBox(
               width: size.width * 0.75,
-              child: CustomButton(text: "AGREE AND CONTINUE",onPressed: ()=> navigateToLoginScreen(context),),
+              child: CustomButton(text: "SIGN UP",onPressed: ()=> navigateToLoginScreen(context),),
             ),
 
           ],

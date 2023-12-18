@@ -9,10 +9,12 @@ import 'package:nsm_messenger/features/chat/widgets/video_player_item.dart';
 class DisplayMessage extends StatelessWidget {
   final String message;
   final MessageEnum type;
+  final bool isMyMessage;
   const DisplayMessage({
     Key? key,
     required this.message,
     required this.type,
+    required this.isMyMessage
   }) : super(key: key);
 
   @override
@@ -23,9 +25,9 @@ class DisplayMessage extends StatelessWidget {
     return type == MessageEnum.text
         ? Text(
             message,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 19,
-              color: whiteColor
+              color: isMyMessage ? whiteColor : blackColor
             ),
           )
         : type == MessageEnum.audio

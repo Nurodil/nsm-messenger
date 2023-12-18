@@ -24,15 +24,11 @@ class MobileChatScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 228, 229, 230),
       appBar: AppBar(
         iconTheme: IconThemeData(color: whiteColor),
         backgroundColor: appBarColor,
-        title: isGroupChat
-            ? Text(
-                name,
-                style: TextStyle(color: whiteColor),
-              )
-            : StreamBuilder<UserModel>(
+        title:  StreamBuilder<UserModel>(
                 stream: ref.read(authControllerProvider).userDataById(uid),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {

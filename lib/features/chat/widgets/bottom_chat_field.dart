@@ -182,7 +182,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                 backgroundColor: Colors.blue,
                 radius: 25,
                 child: GestureDetector(
-                  child: Icon(Icons.send),
+                  child: Icon(Icons.send,color: whiteColor,),
                   onTap: sendTextMessage,
                 ),
               ),

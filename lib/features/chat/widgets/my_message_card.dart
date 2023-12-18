@@ -47,6 +47,7 @@ class MyMessageCard extends StatelessWidget {
                           bottom: 25,
                         ),
                   child: DisplayMessage(
+                   isMyMessage: true,
                     message: message, 
                     type: type
                   ),

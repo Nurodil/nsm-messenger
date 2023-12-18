@@ -61,6 +61,7 @@ class SenderMessageCard extends StatelessWidget {
                         ),
                   
                   child: DisplayMessage(
+                    isMyMessage: false,
                     message: message, 
                     type: type
                   ),
