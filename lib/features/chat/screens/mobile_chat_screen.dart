@@ -24,53 +24,51 @@ class MobileChatScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: whiteColor),
-          backgroundColor: appBarColor,
-          title: isGroupChat
-              ? Text(name, style: TextStyle(color: whiteColor),)
-              : StreamBuilder<UserModel>(
-                  stream: ref.read(authControllerProvider).userDataById(uid),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Loader();
-                    }
-                    return Column(
-                      children: [
-                        Text(name, style: TextStyle(color: whiteColor),),
-                        Text(
-                          snapshot.data!.isOnline ? 'online' : 'offline',
-                          style: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.normal,
-                            color: whiteColor
-                          ),
-                        ),
-                      ],
-                    );
-                  }),
-          centerTitle: false,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_vert),
-            ),
-          ],
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              child: ChatList(
-                recieverUserId: uid,
-                isGroupChat: isGroupChat,
-              ),
-            ),
-            BottomChatField(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: whiteColor),
+        backgroundColor: appBarColor,
+        title: isGroupChat
+            ? Text(
+                name,
+                style: TextStyle(color: whiteColor),
+              )
+            : StreamBuilder<UserModel>(
+                stream: ref.read(authControllerProvider).userDataById(uid),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Loader();
+                  }
+                  return Column(
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(color: whiteColor),
+                      ),
+                    ],
+                  );
+                }),
+        centerTitle: false,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ChatList(
               recieverUserId: uid,
               isGroupChat: isGroupChat,
             ),
-          ],
-        ),
-      );
+          ),
+          BottomChatField(
+            recieverUserId: uid,
+            isGroupChat: isGroupChat,
+          ),
+        ],
+      ),
+    );
   }
 }
