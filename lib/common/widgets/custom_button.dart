@@ -4,20 +4,25 @@ import 'package:nsm_messenger/common/utils/colors.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-
-  const CustomButton({super.key, required this.text, required this.onPressed});
+  const CustomButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: whiteColor,
+        ),
+      ),
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: appBarColor,
-        minimumSize: const Size(double.infinity, 50)
-      ),
-      child: Text(text, style: const TextStyle(
-        color: whiteColor
-        ),
+        primary: tabColor,
+        minimumSize: const Size(double.infinity, 50),
       ),
     );
   }

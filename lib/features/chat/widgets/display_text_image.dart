@@ -1,20 +1,16 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:nsm_messenger/common/enums/message_enum.dart';
-import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/features/chat/widgets/video_player_item.dart';
 
-class DisplayMessage extends StatelessWidget {
+class DisplayTextImage extends StatelessWidget {
   final String message;
   final MessageEnum type;
-  final bool isMyMessage;
-  const DisplayMessage({
+  const DisplayTextImage({
     Key? key,
     required this.message,
     required this.type,
-    required this.isMyMessage
   }) : super(key: key);
 
   @override
@@ -25,9 +21,8 @@ class DisplayMessage extends StatelessWidget {
     return type == MessageEnum.text
         ? Text(
             message,
-            style: TextStyle(
-              fontSize: 19,
-              color: isMyMessage ? whiteColor : blackColor
+            style: const TextStyle(
+              fontSize: 16,
             ),
           )
         : type == MessageEnum.audio
@@ -51,8 +46,6 @@ class DisplayMessage extends StatelessWidget {
                   },
                   icon: Icon(
                     isPlaying ? Icons.pause_circle : Icons.play_circle,
-                    color: whiteColor,
-                    size: 27,
                   ),
                 );
               })
@@ -60,8 +53,8 @@ class DisplayMessage extends StatelessWidget {
                 ? VideoPlayerItem(
                     videoUrl: message,
                   )
-                : CachedNetworkImage(
-                        imageUrl: message,
-                      );
+                : VideoPlayerItem(
+                    videoUrl: message,
+                  );
   }
 }

@@ -21,50 +21,60 @@ class MobileChatScreen extends ConsumerWidget {
     required this.profilePic,
   }) : super(key: key);
 
+  
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 228, 229, 230),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: whiteColor),
-        backgroundColor: appBarColor,
-        title:  StreamBuilder<UserModel>(
-                stream: ref.read(authControllerProvider).userDataById(uid),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Loader();
-                  }
-                  return Column(
-                    children: [
-                      Text(
-                        name,
-                        style: TextStyle(color: whiteColor),
-                      ),
-                    ],
-                  );
-                }),
-        centerTitle: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_vert),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ChatList(
+        appBar: AppBar(
+          backgroundColor: appBarColor,
+          title: isGroupChat
+              ? Text(name, 
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: whiteColor,
+                ),
+              )
+              : StreamBuilder<UserModel>(
+                  stream: ref.read(authControllerProvider).userDataById(uid),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Loader();
+                    }
+                    return Column(
+                      children: [
+                        Text(name,
+                          style: const TextStyle(
+                          fontSize: 20,
+                          color: whiteColor,
+                          ),
+                        ),
+                        Text(
+                          snapshot.data!.isOnline ? 'online' : 'offline',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.normal,
+                            color: whiteColor,
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
+          centerTitle: false,
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: ChatList(
+                recieverUserId: uid,
+                isGroupChat: isGroupChat,
+              ),
+            ),
+            BottomChatField(
               recieverUserId: uid,
               isGroupChat: isGroupChat,
             ),
-          ),
-          BottomChatField(
-            recieverUserId: uid,
-            isGroupChat: isGroupChat,
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
   }
 }

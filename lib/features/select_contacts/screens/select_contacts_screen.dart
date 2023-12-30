@@ -21,32 +21,15 @@ class SelectContactsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: whiteColor,
+        iconTheme: IconThemeData(
+        color:whiteColor, 
         ),
         title: const Text('Select contact',
-        style: TextStyle(
-              fontSize: 23,
-              color: whiteColor,
-              fontWeight: FontWeight.bold,
-        ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
+          style: TextStyle(
+              fontSize: 20,
               color: whiteColor,
             ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.more_vert,
-              color: whiteColor,
             ),
-          ),
-        ],
       ),
       body: ref.watch(getContactsProvider).when(
             data: (contactList) => ListView.builder(
@@ -61,7 +44,7 @@ class SelectContactsScreen extends ConsumerWidget {
                         title: Text(
                           contact.displayName,
                           style: const TextStyle(
-                            fontSize: 19,
+                            fontSize: 18,
                           ),
                         ),
                         leading: contact.photo == null

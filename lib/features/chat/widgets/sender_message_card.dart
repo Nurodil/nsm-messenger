@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/common/enums/message_enum.dart';
-import 'package:nsm_messenger/features/chat/widgets/display_message.dart';
+import 'package:nsm_messenger/features/chat/widgets/display_text_image.dart';
 
 class SenderMessageCard extends StatelessWidget {
   const SenderMessageCard({
@@ -10,12 +9,12 @@ class SenderMessageCard extends StatelessWidget {
     required this.message,
     required this.date,
     required this.type,
-    this.senderName
+    required this.username,
   }) : super(key: key);
   final String message;
   final String date;
   final MessageEnum type;
-  final String? senderName;
+  final String? username;
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +32,6 @@ class SenderMessageCard extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: Stack(
               children: [
-                if (senderName != null)
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(senderName!, 
-                        style: TextStyle(
-                          fontSize: 13,
-                        ),
-                      ),
-                    ],
-                  ),
-                
                 Padding(
                   padding: type == MessageEnum.text
                       ? const EdgeInsets.only(
@@ -57,13 +44,15 @@ class SenderMessageCard extends StatelessWidget {
                           left: 5,
                           top: 5,
                           right: 5,
-                          bottom: 20,
+                          bottom: 25,
                         ),
-                  
-                  child: DisplayMessage(
-                    isMyMessage: false,
-                    message: message, 
-                    type: type
+                  child: Column(
+                    children: [
+                      DisplayTextImage(
+                        message: message,
+                        type: type,
+                      ),
+                    ],
                   ),
                 ),
                 Positioned(
@@ -73,7 +62,7 @@ class SenderMessageCard extends StatelessWidget {
                     date,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.white60,
+                      color: Colors.grey[600],
                     ),
                   ),
                 ),

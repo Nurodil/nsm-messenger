@@ -1,15 +1,14 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/common/utils/utils.dart';
 import 'package:nsm_messenger/common/widgets/custom_button.dart';
-import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/features/auth/controller/auth_controller.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
-  static const routeName = '/login_screen';
-  const LoginScreen({super.key});
+  static const routeName = '/login-screen';
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
@@ -18,89 +17,82 @@ class LoginScreen extends ConsumerStatefulWidget {
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final phoneController = TextEditingController();
   Country? country;
+
   @override
   void dispose() {
-    phoneController.dispose();
     super.dispose();
+    phoneController.dispose();
   }
 
   void pickCountry() {
     showCountryPicker(
-      context: context, 
-      onSelect: (Country _country) {
-        setState(() {
-          country = _country;
+        context: context,
+        onSelect: (Country _country) {
+          setState(() {
+            country = _country;
+          });
         });
-      });
   }
 
-  void sendPhoneNumber(){
+  void sendPhoneNumber() {
     String phoneNumber = phoneController.text.trim();
     if (country != null && phoneNumber.isNotEmpty) {
-      ref.read(authControllerProvider)
-      .signInWithPhone(context, "+${country!.phoneCode}$phoneNumber");
-    }
-    else {
-      showSnackBar(context: context, content: "Fill out all the field");
+      ref
+          .read(authControllerProvider)
+          .signInWithPhone(context, '+${country!.phoneCode}$phoneNumber');
+    } else {
+      showSnackBar(context: context, content: 'Fill out all the fields');
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: backgroundColor, ),
-        title: const Text("Enter your phone number"),
+        title: const Text('Enter your phone number'),
         elevation: 0,
-        titleTextStyle:const TextStyle(
-            color: backgroundColor,
-            fontSize: 21,
-            
-          )  
+        backgroundColor: backgroundColor,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(17.0),
+          padding: const EdgeInsets.all(18.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text("NSM Messenger will need to verify your phone number",
-              style: TextStyle(
-                fontSize: 15
-              ),),
-              const SizedBox(height: 9,),
+              const Text('WhatsApp will need to verify your phone number.'),
+              const SizedBox(height: 10),
               TextButton(
-                onPressed: pickCountry, 
-                child: const Text("Pick Country")
+                onPressed: pickCountry,
+                child: const Text('Pick Country'),
               ),
-              const SizedBox(height: 5,),
+              const SizedBox(height: 5),
               Row(
                 children: [
-                  if(country != null) 
-                  Text("+${country!.phoneCode}"),
-                  const SizedBox(width: 10,),
+                  if (country != null) Text('+${country!.phoneCode}'),
+                  const SizedBox(width: 10),
                   SizedBox(
-                    width: size.width * 0.75,
+                    width: size.width * 0.7,
                     child: TextField(
                       controller: phoneController,
                       decoration: const InputDecoration(
-                        hintText: "phone number",
+                        hintText: 'phone number',
                       ),
-                      keyboardType: TextInputType.phone,
-                      
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: size.height*0.6,),
+              SizedBox(height: size.height * 0.6),
               SizedBox(
-                width: 115,
+                width: 130,
                 child: CustomButton(
                   onPressed: sendPhoneNumber,
-                  text: "NEXT",
+                  text: 'NEXT',
                 ),
-              )
-          ]),
+              ),
+            ],
+          ),
         ),
       ),
     );

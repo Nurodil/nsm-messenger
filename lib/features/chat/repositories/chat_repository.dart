@@ -22,7 +22,7 @@ final chatRepositoryProvider = Provider(
 class ChatRepository {
   final FirebaseFirestore firestore;
   final FirebaseAuth auth;
-  ChatRepository( {
+  ChatRepository({
     required this.firestore,
     required this.auth,
   });
@@ -35,7 +35,6 @@ class ChatRepository {
         .snapshots()
         .asyncMap((event) async {
       List<ChatContact> contacts = [];
-
       for (var document in event.docs) {
         var chatContact = ChatContact.fromMap(document.data());
         var userData = await firestore
@@ -172,6 +171,7 @@ class ChatRepository {
       type: messageType,
       timeSent: timeSent,
       messageId: messageId,
+      isSeen: false,
     );
     if (isGroupChat) {
       // groups -> group id -> chat -> message
@@ -267,7 +267,7 @@ class ChatRepository {
       var messageId = const Uuid().v1();
 
       String imageUrl = await ref
-          .read(CommonFirebaseStorageRepositoryProvider)
+          .read(commonFirebaseStorageRepositoryProvider)
           .storeFileToFirebase(
             'chat/${messageEnum.type}/${senderUserData.uid}/$recieverUserId/$messageId',
             file,
@@ -293,7 +293,7 @@ class ChatRepository {
           contactMsg = '🎵 Audio';
           break;
         default:
-          contactMsg = 'unknown type';
+          contactMsg = '';
       }
       _saveDataToContactsSubcollection(
         senderUserData,
@@ -315,6 +315,34 @@ class ChatRepository {
         senderUsername: senderUserData.name,
         isGroupChat: isGroupChat,
       );
+    } catch (e) {
+      showSnackBar(context: context, content: e.toString());
+    }
+  }
+
+  void setChatMessageSeen(
+    BuildContext context,
+    String recieverUserId,
+    String messageId,
+  ) async {
+    try {
+      await firestore
+          .collection('users')
+          .doc(auth.currentUser!.uid)
+          .collection('chats')
+          .doc(recieverUserId)
+          .collection('messages')
+          .doc(messageId)
+          .update({'isSeen': true});
+
+      await firestore
+          .collection('users')
+          .doc(recieverUserId)
+          .collection('chats')
+          .doc(auth.currentUser!.uid)
+          .collection('messages')
+          .doc(messageId)
+          .update({'isSeen': true});
     } catch (e) {
       showSnackBar(context: context, content: e.toString());
     }

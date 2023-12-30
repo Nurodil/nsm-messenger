@@ -33,7 +33,6 @@ dependencies:
   audioplayers: ^5.2.1
   enough_platform_widgets: ^1.0.0
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

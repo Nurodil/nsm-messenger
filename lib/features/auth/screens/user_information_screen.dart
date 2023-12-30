@@ -1,10 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nsm_messenger/common/utils/utils.dart';
-
-import '../controller/auth_controller.dart';
+import 'package:nsm_messenger/features/auth/controller/auth_controller.dart';
 
 class UserInformationScreen extends ConsumerStatefulWidget {
   static const String routeName = '/user-information';
@@ -51,7 +49,6 @@ class _UserInformationScreenState extends ConsumerState<UserInformationScreen> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 31,),
               Stack(
                 children: [
                   image == null
