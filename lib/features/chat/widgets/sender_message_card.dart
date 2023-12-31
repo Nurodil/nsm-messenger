@@ -9,12 +9,12 @@ class SenderMessageCard extends StatelessWidget {
     required this.message,
     required this.date,
     required this.type,
-    required this.username,
+    required this.isGroupChat,
   }) : super(key: key);
   final String message;
   final String date;
   final MessageEnum type;
-  final String? username;
+  final bool isGroupChat;
 
   @override
   Widget build(BuildContext context) {

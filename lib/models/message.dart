@@ -7,7 +7,6 @@ class Message {
   final MessageEnum type;
   final DateTime timeSent;
   final String messageId;
-  final bool isSeen;
 
   Message({
     required this.senderId,
@@ -16,7 +15,6 @@ class Message {
     required this.type,
     required this.timeSent,
     required this.messageId,
-    required this.isSeen,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,7 +25,6 @@ class Message {
       'type': type.type,
       'timeSent': timeSent.millisecondsSinceEpoch,
       'messageId': messageId,
-      'isSeen': isSeen,
     };
   }
 
@@ -39,7 +36,6 @@ class Message {
       type: (map['type'] as String).toEnum(),
       timeSent: DateTime.fromMillisecondsSinceEpoch(map['timeSent']),
       messageId: map['messageId'] ?? '',
-      isSeen: map['isSeen'] ?? false,
     );
   }
 }

@@ -87,7 +87,7 @@ class ChatRepository {
       return messages;
     });
   }
-
+  
   Stream<List<Message>> getGroupChatStream(String groudId) {
     return firestore
         .collection('groups')
@@ -171,7 +171,6 @@ class ChatRepository {
       type: messageType,
       timeSent: timeSent,
       messageId: messageId,
-      isSeen: false,
     );
     if (isGroupChat) {
       // groups -> group id -> chat -> message
@@ -320,31 +319,4 @@ class ChatRepository {
     }
   }
 
-  void setChatMessageSeen(
-    BuildContext context,
-    String recieverUserId,
-    String messageId,
-  ) async {
-    try {
-      await firestore
-          .collection('users')
-          .doc(auth.currentUser!.uid)
-          .collection('chats')
-          .doc(recieverUserId)
-          .collection('messages')
-          .doc(messageId)
-          .update({'isSeen': true});
-
-      await firestore
-          .collection('users')
-          .doc(recieverUserId)
-          .collection('chats')
-          .doc(auth.currentUser!.uid)
-          .collection('messages')
-          .doc(messageId)
-          .update({'isSeen': true});
-    } catch (e) {
-      showSnackBar(context: context, content: e.toString());
-    }
-  }
 }

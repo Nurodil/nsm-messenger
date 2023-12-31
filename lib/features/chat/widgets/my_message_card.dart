@@ -8,16 +8,12 @@ class MyMessageCard extends StatelessWidget {
   final String message;
   final String date;
   final MessageEnum type;
-  final String? username;
-  final bool isSeen;
 
   const MyMessageCard({
     Key? key,
     required this.message,
     required this.date,
     required this.type,
-    required this.username,
-    required this.isSeen,
   }) : super(key: key);
 
   @override
@@ -71,14 +67,6 @@ class MyMessageCard extends StatelessWidget {
                           fontSize: 13,
                           color: Colors.white60,
                         ),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Icon(
-                        isSeen ? Icons.done_all : Icons.done,
-                        size: 20,
-                        color: isSeen ? Colors.blue : Colors.white60,
                       ),
                     ],
                   ),
