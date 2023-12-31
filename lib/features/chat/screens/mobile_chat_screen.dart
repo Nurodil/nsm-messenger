@@ -12,7 +12,7 @@ class MobileChatScreen extends ConsumerWidget {
   final String name;
   final String uid;
   final bool isGroupChat;
-  final String profilePic;
+  final String? profilePic;
   const MobileChatScreen({
     Key? key,
     required this.name,
@@ -26,6 +26,7 @@ class MobileChatScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: const IconThemeData(color: whiteColor),
           backgroundColor: appBarColor,
           title: isGroupChat
               ? Text(name, 
@@ -61,19 +62,22 @@ class MobileChatScreen extends ConsumerWidget {
                   }),
           centerTitle: false,
         ),
-        body: Column(
-          children: [
-            Expanded(
-              child: ChatList(
+        body: Container(
+          color: Color.fromARGB(153, 230, 231, 232),
+          child: Column(
+            children: [
+              Expanded(
+                child: ChatList(
+                  recieverUserId: uid,
+                  isGroupChat: isGroupChat,
+                ),
+              ),
+              BottomChatField(
                 recieverUserId: uid,
                 isGroupChat: isGroupChat,
               ),
-            ),
-            BottomChatField(
-              recieverUserId: uid,
-              isGroupChat: isGroupChat,
-            ),
-          ],
+            ],
+          ),
         ),
       );
   }

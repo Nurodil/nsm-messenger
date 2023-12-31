@@ -2,27 +2,31 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:nsm_messenger/common/enums/message_enum.dart';
+import 'package:nsm_messenger/common/utils/colors.dart';
 import 'package:nsm_messenger/features/chat/widgets/video_player_item.dart';
 
 class DisplayTextImage extends StatelessWidget {
   final String message;
   final MessageEnum type;
+  final bool isMine;
   const DisplayTextImage({
     Key? key,
     required this.message,
     required this.type,
+    required this.isMine,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     bool isPlaying = false;
     final AudioPlayer audioPlayer = AudioPlayer();
-
+    Color messageTextColor = isMine ? whiteColor : blackColor;
     return type == MessageEnum.text
-        ? Text(
+        ?Text(
             message,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
+              color: messageTextColor
             ),
           )
         : type == MessageEnum.audio

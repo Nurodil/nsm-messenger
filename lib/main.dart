@@ -29,7 +29,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'NSM UI',
+      title: 'NSM Messenger UI',
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: backgroundColor,
         appBarTheme: const AppBarTheme(

@@ -21,7 +21,7 @@ class SelectContactsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
         color:whiteColor, 
         ),
         title: const Text('Select contact',

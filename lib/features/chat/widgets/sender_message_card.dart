@@ -51,6 +51,7 @@ class SenderMessageCard extends StatelessWidget {
                       DisplayTextImage(
                         message: message,
                         type: type,
+                        isMine: false,
                       ),
                     ],
                   ),

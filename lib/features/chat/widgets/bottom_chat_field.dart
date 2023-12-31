@@ -49,7 +49,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   }
 
   void sendTextMessage() async {
-    if (isShowSendButton) {
+    if (isShowSendButton && _messageController.text.trim().isNotEmpty) {
       ref.read(chatControllerProvider).sendTextMessage(
             context,
             _messageController.text.trim(),
@@ -165,16 +165,16 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                   filled: true,
                   fillColor: mobileChatBoxColor,
                   prefixIcon: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 13.0),
                     child: SizedBox(
-                      width: 100,
+                      width: 75,
                       child: Row(
                         children: [
                           IconButton(
                             onPressed: toggleEmojiKeyboardContainer,
                             icon: const Icon(
                               Icons.emoji_emotions,
-                              color: Colors.grey,
+                              color: greyColor,
                             ),
                           ),
                         ],
@@ -190,14 +190,14 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                           onPressed: selectImage,
                           icon: const Icon(
                             Icons.camera_alt,
-                            color: Colors.grey,
+                            color: greyColor,
                           ),
                         ),
                         IconButton(
                           onPressed: selectVideo,
                           icon: const Icon(
-                            Icons.attach_file,
-                            color: Colors.grey,
+                            Icons.video_camera_back,
+                            color: greyColor,
                           ),
                         ),
                       ],
