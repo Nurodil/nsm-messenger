@@ -53,6 +53,8 @@
 	<string>Mic Use</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Contact list to chat</string>
+	<key>NSAppleMusicUsageDescription</key>
+    <string>Needs to hear record </string>
 
 </dict>
 </plist>

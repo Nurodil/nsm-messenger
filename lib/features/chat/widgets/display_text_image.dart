@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:nsm_messenger/common/enums/message_enum.dart';
@@ -50,6 +51,7 @@ class DisplayTextImage extends StatelessWidget {
                   },
                   icon: Icon(
                     isPlaying ? Icons.pause_circle : Icons.play_circle,
+                    color: whiteColor
                   ),
                 );
               })
@@ -57,8 +59,8 @@ class DisplayTextImage extends StatelessWidget {
                 ? VideoPlayerItem(
                     videoUrl: message,
                   )
-                : VideoPlayerItem(
-                    videoUrl: message,
-                  );
+                : CachedNetworkImage(
+                        imageUrl: message,
+                      );
   }
 }
